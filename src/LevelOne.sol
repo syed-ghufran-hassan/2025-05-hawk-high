@@ -274,6 +274,8 @@ contract LevelOne is Initializable, UUPSUpgradeable {
         emit SchoolInSession(block.timestamp, sessionEnd);
     }
 
+@audit how reviews are getting updated
+
     function giveReview(address _student, bool review) public onlyTeacher {
         if (!isStudent[_student]) {
             revert HH__StudentDoesNotExist();
@@ -291,6 +293,8 @@ contract LevelOne is Initializable, UUPSUpgradeable {
 
         emit ReviewGiven(_student, review, studentScore[_student]);
     }
+
+@audit: graduate event is missing and when the bursary will be distributed
 
     function graduateAndUpgrade(address _levelTwo, bytes memory) public onlyPrincipal {
         if (_levelTwo == address(0)) {
